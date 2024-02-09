@@ -212,7 +212,7 @@ resource "aws_db_instance" "rds_db" {
 ## bastian host security group
 resource "aws_security_group" "bastian_sg" {
 
-  vpc_id = "vpc-0d989b7912dc1864d"
+  vpc_id = aws_vpc.main.id
   name   = "bastian_sg"
   ingress {
     from_port   = 22
