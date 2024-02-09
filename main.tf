@@ -171,7 +171,7 @@ resource "aws_instance" "Webserver" {
 
 ## RDS security group
 resource "aws_security_group" "rds_sg" {
-  vpc_id = "vpc-0d989b7912dc1864d"
+  vpc_id = aws_vpc.main.id
   name   = "rds_sg"
   ingress {
     from_port   = 3306
@@ -179,6 +179,7 @@ resource "aws_security_group" "rds_sg" {
     protocol    = "tcp"
     security_groups = ["${aws_security_group.webserver.id}"]
   }
+  
 }
 
 ## rds subnet group
